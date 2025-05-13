@@ -61,7 +61,7 @@ const Login = () => {
                 setErrors(newErrors)
             }
         } catch (error) {
-            (error);
+            console.log(error);
         }
     }
 

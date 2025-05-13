@@ -11,24 +11,24 @@ export const Landing = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (longUrl)
-            navigate(`/auth?createNew=$ {longUrl}`)
+            navigate(`/auth?createNew=${longUrl}`)
     }
     return (
         <div className='flex flex-col items-center'>
-            <h2 className='my-10 sm:my-16 text-3xl sm:text-6xl lg:text-7xl text-white text-center
-            font-extrabold leading-24'>
+            <h2 className='my-10 sm:my-16 text-4xl sm:text-6xl  text-white text-center
+            font-extrabold sm:leading-20 leading-14'>
                 The only URL Shortener <br /> you'll ever need!
             </h2>
 
-            <form className='sm:h-14 flex flex-col sm:flex-row w-full md:w-2/3 gap-2' onSubmit={handleSubmit}>
+            <form className='sm:h-14 flex flex-col sm:flex-row w-full md:w-2/3 gap-4' onSubmit={handleSubmit}>
                 <Input type='url'
-                    className={'border-white px-4 h-full'} autoFocus
+                    className={'border-white px-4 h-full py-2'} autoFocus
                     placeholder='Enter your long url'
                     onChange={(e) => setLongUrl(e.target.value)}
                     value={longUrl}
                 />
                 <Button
-                    className={'h-full cursor-pointer'} type='submit' variant={'destructive'}>
+                    className={'h-full  cursor-pointer'} type='submit' variant={'destructive'}>
                     Shorten!
                 </Button>
             </form>
@@ -36,7 +36,7 @@ export const Landing = () => {
             <Accordion type="multiple" collapsible className="w-full md:px-11 my-20">
                 <AccordionItem value="item-1">
                     <AccordionTrigger>
-                        How does the URL shortener works?
+                        How does snip works?
                     </AccordionTrigger>
                     <AccordionContent>
                         When you enter a long URL, our system generates a shorter version of

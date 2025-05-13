@@ -1,4 +1,6 @@
+import CreateLink from '@/components/CreateLink'
 import Error from '@/components/Error'
+import LinkCard from '@/components/LinkCard'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -36,7 +38,7 @@ const Dashboard = () => {
                         <CardTitle>Links Created</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <p>0</p>
+                        <p>{urls?.length}</p>
                     </CardContent>
                 </Card>
                 <Card>
@@ -44,21 +46,24 @@ const Dashboard = () => {
                         <CardTitle>Total Clicks</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <p>0</p>
+                        <p>{clicks?.length}</p>
                     </CardContent>
                 </Card>
             </div>
 
             <div className='flex justify-between'>
                 <h1 className='text-4xl font-bold'>My Links </h1>
-                <Button>Create Link</Button>
+                <CreateLink />
             </div>
 
-            <div className='relative'>
-                <Input type="text" placeholder="Search Link..." value={search} onChange={(e) => setSearch(e.target.value)} />
+            <div className='relative z-0'>
+                <Input type="text" placeholder="Search Link..." value={search} onChange={(e) => setSearch(e.target.value)} className={''} />
                 <Search className='absolute top-2 right-2 p-1' />
             </div>
             {error && <Error message={error.message} />}
+            {(searchedUrls || []).map((url, i) => {
+                return <LinkCard url={url} fetchUrls={fnUrls} key={i} />
+            })}
         </div >
     )
 }
