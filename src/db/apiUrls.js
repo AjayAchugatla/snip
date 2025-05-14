@@ -45,3 +45,30 @@ export async function createUrl({ title, longUrl, custom_url, user_id, qrcode })
 
     return data
 }
+
+export async function getLongUrl(url) {
+    const { data, error } = await supabase
+        .from("urls")
+        .select("id,original_url")
+        .or(`short_url.eq.${url},custom_url.eq.${url}`)
+        .single()
+    if (error) {
+        console.error("Unable fetching long url");
+        throw new Error(error.message)
+    }
+    return data;
+}
+
+export async function getUrl({ id, user_id }) {
+    const { data, error } = await supabase
+        .from("urls")
+        .select("*")
+        .eq("id", id)
+        .eq("user_id", user_id)
+        .single()
+    if (error) {
+        console.error("short url not found");
+        throw new Error(error.message)
+    }
+    return data;
+}

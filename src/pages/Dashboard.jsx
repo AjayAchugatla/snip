@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { urlState } from '@/context'
-import { getClicks } from '@/db/apiClicks'
+import { getAllClicks } from '@/db/apiClicks'
 import { getUrls } from '@/db/apiUrls'
 import useFetch from '@/hooks/useFetch'
 import { Search } from 'lucide-react'
@@ -17,7 +17,7 @@ const Dashboard = () => {
     const [search, setSearch] = useState("");
     const { user } = urlState()
     const { data: urls, loading, error, fn: fnUrls } = useFetch(getUrls)
-    const { data: clicks, loading: loadingClicks, error: errorClicks, fn: fnClicks } = useFetch(getClicks)
+    const { data: clicks, loading: loadingClicks, error: errorClicks, fn: fnClicks } = useFetch(getAllClicks)
 
     useEffect(() => {
         fnUrls(user.id)
