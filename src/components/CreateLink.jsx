@@ -103,7 +103,7 @@ const CreateLink = () => {
                 />
                 {errors.longUrl && <Error message={errors.longUrl} />}
                 <div className="flex items-center gap-2">
-                    <Card className="p-2">snip.vercel.app</Card> /
+                    <Card className="p-2">snipapp.vercel.app</Card> /
                     <Input
                         id="custom_url"
                         placeholder="Custom Link (optional)"

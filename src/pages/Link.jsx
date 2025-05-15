@@ -60,11 +60,11 @@ const Link = () => {
                         {url?.title}
                     </span>
                     <a
-                        href={`https://snip.vercel.app/${link}`}
+                        href={`https://snipapp.vercel.app/${link}`}
                         target="_blank"
                         className="text-3xl sm:text-4xl text-blue-400 font-bold hover:underline cursor-pointer"
                     >
-                        {`https://snip.vercel.app/${link}`}
+                        {`https://snipapp.vercel.app/${link}`}
                     </a>
                     <a
                         href={url?.original_url}
@@ -81,7 +81,7 @@ const Link = () => {
                         <Button
                             variant="ghost"
                             onClick={() =>
-                                navigator.clipboard.writeText(`https://snip.vercel.app/${link}`)
+                                navigator.clipboard.writeText(`https://snipapp.vercel.app/${link}`)
                             }
                         >
                             <Copy />
