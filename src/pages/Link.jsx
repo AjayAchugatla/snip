@@ -62,7 +62,7 @@ const Link = () => {
                     <a
                         href={`https://snipapp.vercel.app/${link}`}
                         target="_blank"
-                        className="text-3xl sm:text-4xl text-blue-400 font-bold hover:underline cursor-pointer"
+                        className="text-xl sm:text-2xl text-blue-400 font-bold hover:underline cursor-pointer"
                     >
                         {`https://snipapp.vercel.app/${link}`}
                     </a>
