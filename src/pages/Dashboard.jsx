@@ -1,6 +1,7 @@
 import CreateLink from '@/components/CreateLink'
 import Error from '@/components/Error'
 import LinkCard from '@/components/LinkCard'
+import Loader from '@/components/Loader'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -10,7 +11,7 @@ import { getUrls } from '@/db/apiUrls'
 import useFetch from '@/hooks/useFetch'
 import { Search } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
-import { BarLoader } from 'react-spinners'
+
 
 const Dashboard = () => {
 
@@ -31,7 +32,7 @@ const Dashboard = () => {
 
     return (
         <div className='flex flex-col gap-8'>
-            {(loading || loadingClicks) && <BarLoader width={"100%"} color="#36d7b7" />}
+            {(loading || loadingClicks) && <Loader />}
             <div className='grid grid-cols-2 gap-4 mt-4'>
                 <Card>
                     <CardHeader>

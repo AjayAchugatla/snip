@@ -1,19 +1,19 @@
-import { LinkIcon, LogOut, ScissorsSquare } from 'lucide-react'
+import { LinkIcon, LogOut } from 'lucide-react'
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Button } from './ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from './ui/dropdown-menu'
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
+import { Avatar, AvatarImage } from './ui/avatar'
 import { urlState } from '@/context'
 import useFetch from '@/hooks/useFetch'
 import { logout } from '@/db/apiAuth'
-import { BarLoader } from 'react-spinners'
+import Loader from './Loader'
 
 const Header = () => {
     const { user, fetchUser } = urlState();
     const navigate = useNavigate()
     const { loading, fn: fnLogout } = useFetch(logout)
-
+    const currentUrl = window.location.pathname;
     const handleLogout = () => {
         fnLogout().then(() => {
             fetchUser();
@@ -21,28 +21,37 @@ const Header = () => {
         })
     }
 
-
     return (
         <>
             {
                 loading &&
-                <BarLoader className={"mb-4"} width={"100%"} color="#36d7b7" />
+                <Loader />
             }
-            <nav className='px-15 py-4 flex justify-between items-center border-b-2 w-full sticky top-0 bg-slate-800 z-10'>
+            <nav className='px-15 py-4 flex justify-between items-center border-b-2 w-full sticky top-0 bg-sky-50 z-10 text-black'>
                 <Link to={'/'} className='flex gap-1'>
-                    <ScissorsSquare size={38} />
-                    <span className='text-2xl  font-extrabold'>Snip</span>
+                    <LinkIcon size={38} />
+                    <span className='text-2xl font-extrabold'>Snip</span>
                 </Link>
-
+                <div className='hidden lg:flex items-center justify-around gap-20'>
+                    <Link to={'/'} className={`text-lg font-semibold hover:underline ${currentUrl === '/' ? 'text-blue-700' : ''}`}>Home</Link>
+                    <span className='mx-2'>|</span>
+                    <Link to={'/dashboard   '} className={`text-lg font-semibold hover:underline ${currentUrl === '/dashboard' ? 'text-blue-700' : ''}`}>
+                        Dashboard
+                    </Link>
+                </div>
                 <div>
                     {
                         !user
-                            ? <Button onClick={() => navigate('/auth')} className={'cursor-pointer'}>Login</Button>
+                            ? <div>
+                                <Button variant={'primary'} className={'text-lg font-semibold hover:underline cursor-pointer'}
+                                    onClick={() => navigate('/auth')} >Login
+                                </Button>
+                            </div>
+
                             : <DropdownMenu >
                                 <DropdownMenuTrigger className=' overflow-hidden rounded-full'>
                                     <Avatar>
                                         <AvatarImage src={user?.user_metadata?.profile_pic} className={'object-fill'} />
-                                        {/* <AvatarFallback>CN</AvatarFallback> */}
                                     </Avatar>
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent className='text-center'>

@@ -1,4 +1,5 @@
 import DeviceStats from '@/components/DeviceStats';
+import Loader from '@/components/Loader';
 import LocationStats from '@/components/LocationStats';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -9,7 +10,7 @@ import useFetch from '@/hooks/useFetch';
 import { Copy, Download, LinkIcon, Trash } from 'lucide-react';
 import React, { useEffect, useRef } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import { BarLoader, BeatLoader } from 'react-spinners';
+
 
 const Link = () => {
 
@@ -52,7 +53,7 @@ const Link = () => {
     return (
         <>
             {(loading || loadingStats) && (
-                <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />
+                <Loader />
             )}
             <div className="flex flex-col gap-8 sm:flex-row justify-between mt-8 px-4">
                 <div className="flex flex-col items-start gap-8 rounded-lg sm:w-2/5">

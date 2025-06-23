@@ -1,7 +1,8 @@
 import { urlState } from "@/context";
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom"
-import { BarLoader } from "react-spinners";
+import Loader from "./Loader";
+
 
 
 const RequireAuth = () => {
@@ -14,7 +15,7 @@ const RequireAuth = () => {
             navigate(`/auth`)
     }, [isAuthenticated, loading])
 
-    if (loading) return <BarLoader width={"100%"} color="#36d7b7" />
+    if (loading) return <Loader />
     if (isAuthenticated) return <Outlet />
 }
 
