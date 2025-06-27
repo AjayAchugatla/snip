@@ -19,11 +19,11 @@ const Auth = () => {
     }, [isAuthenticated, loading])
     return (
         <div className='my-12 flex flex-col items-center gap-10'>
-            <h1 className='text-5xl font-extrabold'>
+            <h1 className='text-4xl sm:text-5xl font-extrabold'>
                 {searchParams.get("createNew") ? "Hold up! Let's login first.." : "Login / Signup"}
             </h1>
 
-            <Tabs defaultValue="login" className="w-[400px]">
+            <Tabs defaultValue="login" className="w-[360px]">
                 <TabsList className={'w-full '}>
                     <TabsTrigger value="login">Login</TabsTrigger>
                     <TabsTrigger value="signup">Signup</TabsTrigger>

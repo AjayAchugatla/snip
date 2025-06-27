@@ -10,9 +10,6 @@ const AppLayout = () => {
                     {<Outlet />}
                 </div>
             </main>
-            <div className='sm:mt-8 p-5 text-center bg-gray-800'>
-                Made by Ajay
-            </div>
         </div>
     )
 }

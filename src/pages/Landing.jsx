@@ -15,9 +15,9 @@ export const Landing = () => {
     }
     return (
         <div className='flex flex-col items-center'>
-            <h2 className='my-10 sm:my-16 text-4xl sm:text-6xl  text-white text-center
+            <h2 className='my-10 sm:my-16 text-3xl sm:text-5xl  text-white text-center
             font-extrabold sm:leading-20 leading-14'>
-                The only URL Shortener <br /> you'll ever need!
+                Your go-to link shortener <br /> simple, fast, and reliable
             </h2>
 
             <form className='sm:h-14 flex flex-col sm:flex-row w-full md:w-2/3 gap-4' onSubmit={handleSubmit}>

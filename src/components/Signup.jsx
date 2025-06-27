@@ -91,6 +91,7 @@ const Signup = () => {
                         {errors.password ? <Error message={errors.password} /> : null}
                     </div>
                     <div className='space-y-1'>
+                        <p className='text-center'>Profile Picture</p>
                         <Input name='profile_pic' type={'file'} onChange={handleInputChange}
                             accept="image/*"
                             required />
